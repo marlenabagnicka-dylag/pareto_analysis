@@ -5,7 +5,7 @@ SELECT
     standard_time,
     efficiency_pct BETWEEN 5 AND 500 AS efficiency_valid
 FROM
-     `eliminacja-rozbieznosci.efektywnosc.efficiency_final2`
+     `eliminacja-rozbieznosci.efektywnosc.efficiency_table_2_0`
 ),
 product_summary as(
 SELECT
