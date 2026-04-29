@@ -24,7 +24,9 @@ SELECT
     ROUND(total_actual_time,0) AS total_actual_time,
     ROUND(total_standard_time * 100 / NULLIF(total_actual_time, 0),2) AS efficiency_pct_weighted,
     ROUND(product_summary.total_actual_time*100/sum(product_summary.total_actual_time) over(),2) as time_share_pct,
-   ROUND(100*sum(total_actual_time) over (order by total_actual_time desc ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)/sum(total_actual_time) over(),2) as cumulative_share
+   ROUND(sum(total_actual_time) over (order by total_actual_time desc ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)/sum(total_actual_time) over(),4) as cumulative_share
 FROM product_summary
-QUALIFY cumulative_share<=80 
+--QUALIFY cumulative_share<=0.8
 ORDER BY total_actual_time desc
+
+
